@@ -89,7 +89,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS,                            KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS)
 };
 
-// from here: [https://github.com/kingdase/hasu-usb-usb-neo/blob/master/qmk/keymap.c]
+#ifdef RGB_MATRIX_ENABLE
+void keyboard_post_init_user(void) {
+    rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
+    rgb_matrix_sethsv_noeeprom(0, 255, 124);
+}
+#endif
+
+// neo from here: [https://github.com/kingdase/hasu-usb-usb-neo/blob/master/qmk/keymap.c]
 
 #define MODS_SHIFT_MASK  (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT))
 
